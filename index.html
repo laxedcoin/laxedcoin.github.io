@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Laxed Meme Coin</title>
+  <style>
+    :root{--bg:#0b0c10;--ink:#fff;--muted:#cfd7ff;--accent:#ffd166;--card:#111;--stroke:rgba(255,255,255,.08)}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,'Noto Sans KR',Arial,sans-serif}
+    header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;height:60px;padding:10px 16px;background:var(--card);position:sticky;top:0;z-index:50;border-bottom:1px solid var(--stroke)}
+    .logo{color:var(--accent);font-weight:800;cursor:pointer}
+    .buy{background:var(--accent);color:#111;padding:8px 14px;border-radius:10px;text-decoration:none;font-weight:800}
+    .menu{justify-self:end;position:relative}
+    .menu>button{background:#2a2f3b;border:none;color:#fff;border-radius:8px;padding:6px 12px;cursor:pointer;font-size:18px}
+    .dropdown{display:none;position:absolute;right:0;top:42px;background:#191d28;border:1px solid var(--stroke);border-radius:10px;min-width:180px}
+    .dropdown button{display:block;width:100%;padding:10px 12px;background:none;border:none;color:#e8ecff;text-align:left;cursor:pointer;font-size:14px}
+    .dropdown button:hover{background:rgba(255,255,255,.06)}
+
+    /* Hero */
+    .hero{
+      text-align:center;
+      background:
+        radial-gradient(1200px 600px at 50% -200px, rgba(142,202,230,.08), transparent 60%),
+        url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      padding:80px 20px;
+      border-bottom:1px solid var(--stroke);
+      position:relative;
+      overflow:hidden;
+      min-height:400px;
+    }
+    .coin{width:min(70vw,420px);border-radius:50%;display:block;margin:0 auto;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+    .star{position:absolute;font-size:20px;animation:fall 5s linear infinite;opacity:0}
+    @keyframes fall {
+      0% {transform:translateY(-50px) translateX(0);opacity:0;}
+      10%{opacity:1;}
+      100%{transform:translateY(600px) translateX(200px);opacity:0;}
+    }
+
+    section{padding:36px 20px;text-align:center}
+    h2{font-size:22px;color:#e9edff;margin-bottom:10px}
+    .fine{font-size:14px;line-height:1.8;color:var(--muted);max-width:760px;margin:0 auto}
+
+    /* Tokenomics */
+    .tok{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;max-width:1100px;margin:0 auto}
+    .card{background:var(--card);border:1px solid var(--stroke);border-radius:14px;padding:16px}
+    .list{list-style:none;margin:0;padding:0}
+    .list li{padding:10px 12px;border:1px dashed var(--stroke);border-radius:10px;margin:8px 0;color:var(--muted)}
+
+    /* Roadmap */
+    .road{max-width:1100px;margin:0 auto;display:grid;gap:14px}
+    .step{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:start}
+    .badge{background:#1a2030;border:1px solid var(--stroke);color:#fff;padding:.4rem .6rem;border-radius:10px;text-align:center;font-size:12px}
+    .body{background:var(--card);border:1px solid var(--stroke);border-radius:12px;padding:12px;text-align:left}
+    .body b{display:block;margin-bottom:4px}
+    @media (max-width:900px){.tok{grid-template-columns:1fr} .step{grid-template-columns:1fr}}
+
+    footer{background:var(--card);border-top:1px solid var(--stroke);text-align:center;padding:28px 20px 44px;margin-top:14px}
+    footer a{color:var(--accent);font-weight:800;text-decoration:none}
+    footer a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">🦥 Laxed</div>
+    <a class="buy" href="https://dexscreener.com" target="_blank"
+       data-ko="Laxed 코인 구매" data-en="Buy Laxed Coin" data-jp="Laxedコイン購入"
+       data-cn="购买 Laxed 币" data-es="Comprar Laxed Coin">Laxed 코인 구매</a>
+    <div class="menu">
+      <button onclick="toggleMenu()">☰</button>
+      <div class="dropdown" id="dropdown">
+        <button onclick="setLang('ko')">🇰🇷 한국어</button>
+        <button onclick="setLang('en')">🇺🇸 English</button>
+        <button onclick="setLang('jp')">🇯🇵 日本語</button>
+        <button onclick="setLang('cn')">🇨🇳 中文</button>
+        <button onclick="setLang('es')">🇪🇸 Español</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <img class="coin" src="images/sloth-coin.png" alt="Laxed Meme Coin"/>
+    <div class="star" style="left:20%;animation-delay:0s">✨</div>
+    <div class="star" style="left:60%;animation-delay:2s">🌠</div>
+    <div class="star" style="left:40%;animation-delay:4s">✨</div>
+  </div>
+
+  <!-- 소개 -->
+  <section id="about">
+    <h2 data-ko="소개" data-en="About" data-jp="紹介" data-cn="介绍" data-es="Introducción">소개</h2>
+    <p class="fine"
+       data-ko="Laxed는 여유와 귀여움으로 세계를 연결하는 밈코인입니다. 느림은 곧 여유이며, 여유는 곧 힘입니다."
+       data-en="Laxed is a meme coin that connects the world through cuteness and leisure. Slowness is leisure, and leisure is power."
+       data-jp="Laxedは余裕と可愛さで世界をつなぐミームコインです。遅さは余裕であり、余裕は力です。"
+       data-cn="Laxed是一种通过可爱与悠闲连接世界的迷因币。缓慢即是悠闲，悠闲即是力量。"
+       data-es="Laxed es una meme coin que conecta el mundo con ternura y calma. La lentitud es calma, y la calma es poder.">
+       Laxed는 여유와 귀여움으로 세계를 연결하는 밈코인입니다.
+    </p>
+  </section>
+
+  <!-- 비전 -->
+  <section id="vision">
+    <h2 data-ko="비전" data-en="Vision" data-jp="ビジョン" data-cn="愿景" data-es="Visión">비전</h2>
+    <p class="fine"
+       data-ko="우리는 밈과 문화를 결합해 세계적 흐름을 만듭니다."
+       data-en="We merge memes and culture to create a global movement."
+       data-jp="私たちはミームと文化を結合し、世界的な流れを作ります。"
+       data-cn="我们结合迷因和文化，创造全球潮流。"
+       data-es="Unimos memes y cultura para crear un movimiento global.">
+       우리는 밈과 문화를 결합해 세계적 흐름을 만듭니다.
+    </p>
+  </section>
+
+  <!-- Tokenomics -->
+  <section id="tokenomics">
+    <h2 data-ko="토크노믹스" data-en="Tokenomics" data-jp="トークノミクス" data-cn="代币经济" data-es="Tokenómica">토크노믹스</h2>
+    <div class="tok">
+      <div class="card">
+        <ul class="list">
+          <li data-ko="80% — 커뮤니티 & 유동성" data-en="80% — Community & Liquidity" data-jp="80% — コミュニティ & 流動性" data-cn="80% — 社区与流动性" data-es="80% — Comunidad y Liquidez">80% — 커뮤니티 & 유동성</li>
+          <li data-ko="10% — 마케팅 & 이벤트" data-en="10% — Marketing & Events" data-jp="10% — マーケティング & イベント" data-cn="10% — 营销与活动" data-es="10% — Marketing & Eventos">10% — 마케팅 & 이벤트</li>
+          <li data-ko="5% — 팀" data-en="5% — Team" data-jp="5% — チーム" data-cn="5% — 团队" data-es="5% — Equipo">5% — 팀</li>
+          <li data-ko="5% — 파트너십" data-en="5% — Partnerships" data-jp="5% — パートナーシップ" data-cn="5% — 合作伙伴" data-es="5% — Alianzas">5% — 파트너십</li>
+        </ul>
+      </div>
+      <div class="card fine"
+           data-ko="※ LP 락업, 팀 물량 베스팅으로 ‘러그 아님’을 증명합니다."
+           data-en="※ LP locked and team vesting to prove 'no rug'."
+           data-jp="※ LPロックとチームベスティングで「ラグ無し」を証明します。"
+           data-cn="※ 通过LP锁定与团队归属来证明“非拉盘”。"
+           data-es="※ LP bloqueada y vesting del equipo para demostrar 'no rug'.">
+           ※ LP 락업, 팀 물량 베스팅으로 ‘러그 아님’을 증명합니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section id="roadmap">
+    <h2 data-ko="로드맵" data-en="Roadmap" data-jp="ロードマップ" data-cn="路线图" data-es="Hoja de ruta">로드맵</h2>
+    <div class="road">
+      <div class="step">
+        <div class="badge">Phase 1</div>
+        <div class="body">
+          <b data-ko="런치 & 밈 킥오프" data-en="Launch & Meme Kickoff" data-jp="ローンチ & ミーム開始" data-cn="启动 & 迷因启动" data-es="Lanzamiento & Inicio de Memes">런치 & 밈 킥오프</b>
+          <div class="fine"
+               data-ko="토큰 배포, 첫 밈 캠페인 & 에어드롭, 커뮤니티 채널 오픈"
+               data-en="Token launch, first meme campaign & airdrop, open community channels"
+               data-jp="トークン配布、初のミームキャンペーン & エアドロップ、コミュニティ開設"
+               data-cn="代币上线、首次迷因活动与空投、开放社区频道"
+               data-es="Lanzamiento del token, primera campaña de memes y airdrop, apertura de canales comunitarios">
+               토큰 배포, 첫 밈 캠페인 & 에어드롭, 커뮤니티 채널 오픈
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="badge">Phase 2</div>
+        <div class="body">
+          <b data-ko="커뮤니티 확장" data-en="Community Expansion" data-jp="コミュニティ拡大" data-cn="社区扩张" data-es="Expansión de la Comunidad">커뮤니티 확장</b>
+          <div class="fine"
+               data-ko="밈 NFT/굿즈, 글로벌 인플루언서 협업, 커뮤니티 투표"
+               data-en="Meme NFTs/merch, global influencer collabs, community voting"
+               data-jp="ミームNFT/グッズ、グローバルインフルエンサー連携、コミュニティ投票"
+               data-cn="迷因NFT/周边、全球网红合作、社区投票"
+               data-es="NFTs/merch de memes, colaboraciones con influencers, votación comunitaria">
+               밈 NFT/굿즈, 글로벌 인플루언서 협업, 커뮤니티 투표
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="badge">Phase 3</div>
+        <div class="body">
+          <b data-ko="글로벌 상장 & DAO" data-en="Global Listings & DAO" data-jp="グローバル上場 & DAO" data-cn="全球上市 & DAO" data-es="Listados Globales & DAO">글로벌 상장 & DAO</b>
+          <div class="fine"
+               data-ko="CEX 추진, 국제 밈 캠페인, DAO 전환"
+               data-en="Push CEX listings, global meme campaigns, transition to DAO"
+               data-jp="CEX上場推進、国際ミームキャンペーン、DAO移行"
+               data-cn="推进CEX上架、国际迷因活动、转向DAO"
+               data-es="Impulsar listados en CEX, campañas globales de memes, transición a DAO">
+               CEX 추진, 국제 밈 캠페인, DAO 전환
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Price -->
+  <section id="price">
+    <h2 data-ko="실시간 시세" data-en="Live Price" data-jp="リアルタイム価格" data-cn="实时价格" data-es="Precio en Vivo">실시간 시세</h2>
+    <p class="fine"
+       data-ko="아래에서 Laxed 코인의 현재 시세를 확인하세요 👇"
+       data-en="Check the current price of Laxed coin below 👇"
+       data-jp="以下でLaxedコインの現在価格をご確認ください 👇"
+       data-cn="在下方查看Laxed币的当前价格 👇"
+       data-es="Consulta el precio actual de Laxed coin abajo 👇">
+       아래에서 Laxed 코인의 현재 시세를 확인하세요 👇
+    </p>
+    <iframe width="100%" height="420" src="https://www.dextools.io/widgets/en/pair-explorer/YOUR_CONTRACT_ADDRESS?theme=dark" frameborder="0"></iframe>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <a href="https://twitter.com/YOUR_HANDLE"
+       data-ko="트위터"
+       data-en="Twitter"
+       data-jp="ツイッター"
+       data-cn="推特"
+       data-es="Twitter"
+       target="_blank">트위터</a>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      const d=document.getElementById('dropdown');
+      d.style.display=d.style.display==='block'?'none':'block';
+    }
+    function setLang(lang){
+      document.querySelectorAll("[data-ko]").forEach(el=>{
+        const v = el.getAttribute("data-"+lang);
+        if(v) el.textContent = v;
+      });
+      document.getElementById("dropdown").style.display="none";
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+  </script>
+</body>
+</html>
