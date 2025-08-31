@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laxed Meme Coin</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0b0c10;
+      color: white;
+    }
+
+    /* 상단바 */
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      background-color: #111;
+      padding: 10px 20px;
+      height: 60px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffd166;
+    }
+
+    .buy-btn {
+      background: #ffd166;
+      color: #111;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .lang {
+      text-align: right;
+    }
+
+    .lang button {
+      background: none;
+      border: 1px solid #555;
+      color: white;
+      border-radius: 4px;
+      padding: 4px 8px;
+      margin-left: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    /* 메인 이미지 */
+    .hero-img {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .hero-img img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 50%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #ccc;
+      max-width: 800px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- 상단바 -->
+  <header>
+    <div class="logo">🦥 Laxed</div>
+    <a href="https://dexscreener.com" class="buy-btn" target="_blank">Buy Laxed Coin</a>
+    <div class="lang">
+      <button onclick="setLang('ko')">🇰🇷</button>
+      <button onclick="setLang('en')">🇺🇸</button>
+    </div>
+  </header>
+
+  <!-- 코인 이미지 -->
+  <div class="hero-img">
+    <img src="images/sloth-coin.png" alt="Laxed Meme Coin">
+  </div>
+
+  <!-- 설명 섹션 -->
+  <section id="about">
+    <h2 data-ko="소개" data-en="About">소개</h2>
+    <p data-ko="Laxed는 나무늘보의 귀여움과 상징성을 담은 밈코인입니다."
+       data-en="Laxed is a meme coin inspired by the sloth’s cuteness and symbolism.">
+       Laxed는 나무늘보의 귀여움과 상징성을 담은 밈코인입니다.
+    </p>
+  </section>
+
+  <section id="vision">
+    <h2 data-ko="비전" data-en="Vision">비전</h2>
+    <p data-ko="우리의 비전은 귀여움과 유머로 글로벌 밈 문화를 이끄는 것입니다."
+       data-en="Our vision is to lead global meme culture through cuteness and humor.">
+       우리의 비전은 귀여움과 유머로 글로벌 밈 문화를 이끄는 것입니다.
+    </p>
+  </section>
+
+  <script>
+    // 간단한 언어 전환
+    function setLang(lang) {
+      document.querySelectorAll("[data-ko]").forEach(el => {
+        el.textContent = el.getAttribute("data-" + lang);
+      });
+    }
+  </script>
+</body>
+</html>
